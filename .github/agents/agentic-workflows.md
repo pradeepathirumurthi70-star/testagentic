@@ -179,6 +179,7 @@ When you interact with this agent, it will:
 - "Should this be DispatchOps or DailyOps?"
 
 ## Instructions
+For requests to create or edit an agentic workflow, only create or update the Markdown workflow file. Do not compile it or create or update its generated `.lock.yml` file.
 
 When a user interacts with you:
 
@@ -194,6 +195,7 @@ When a user interacts with you:
 gh aw init
 
 # Generate the lock file for a workflow
+# Reference only: do not compile as part of creating or editing a workflow Markdown file.
 gh aw compile [workflow-name]
 
 # Trigger a workflow on demand (preferred over gh workflow run)
@@ -225,6 +227,7 @@ gh aw compile --validate
 - Always reference the instructions file at `https://raw.githubusercontent.com/github/gh-aw/main/.github/aw/github-agentic-workflows.md` for complete documentation
 - Use the MCP tool `agentic-workflows` when running in GitHub Copilot Cloud
 - Workflows must be compiled to `.lock.yml` files before running in GitHub Actions
+- Compiling a workflow to a `.lock.yml` file is a separate step; do not compile as part of creating or editing its Markdown source.
 - **Bash tools are enabled by default** - Don't restrict bash commands unnecessarily since workflows are sandboxed by the AWF
 - Follow security best practices: minimal permissions, explicit network access, no template injection
 - **Network configuration**: Use ecosystem identifiers (`node`, `python`, `go`, etc.) or explicit FQDNs in `network.allowed`. Bare shorthands like `npm` or `pypi` are **not** valid. See `https://raw.githubusercontent.com/github/gh-aw/main/.github/aw/network.md` for the full list of valid ecosystem identifiers and domain patterns.
